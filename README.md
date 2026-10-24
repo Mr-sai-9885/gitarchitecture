@@ -22,17 +22,17 @@ npx tsx src/index.ts generate ./my-repository
 
 ## Web app
 
-The Next.js App Router wrapper displays the first 30 files from a public GitHub repository's default branch as a Mermaid graph. Run the web app with:
+The Next.js App Router wrapper displays the first 30 files from a public GitHub repository's default branch as a Mermaid graph. Run the web app in development with:
 
 ```sh
-npm run dev:web
+npm run dev
 ```
 
 Then open `http://localhost:3000/<owner>/<repo>`, for example `http://localhost:3000/vercel/next.js`. GitHub API responses are cached for one hour. Private repositories are not supported by this wrapper.
 
 ```sh
-npm run build:web
-npm run start:web
+npm run build
+npm start
 ```
 
 Options:
@@ -65,5 +65,7 @@ Set `GEMINI_API_KEY` in the environment before using `--ai-prompt`. It writes th
 
 ```sh
 npm test
-npm run build
+npm run compile
 ```
+
+The standard `dev`, `build`, and `start` scripts target the Next.js web app (including Vercel deployments). Use `npm run compile` to build the CLI into `dist/`, and `npm run start:cli -- generate <target-dir>` to run its source entry point.

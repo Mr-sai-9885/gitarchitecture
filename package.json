@@ -7,8 +7,11 @@
     "repo-arch": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "start": "tsx src/index.ts",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "compile": "tsc -p tsconfig.build.json",
+    "start:cli": "tsx src/index.ts",
     "dev:web": "next dev",
     "build:web": "next build",
     "start:web": "next start",
