@@ -22,13 +22,13 @@ npx tsx src/index.ts generate ./my-repository
 
 ## Web app
 
-The Next.js App Router wrapper displays the first 30 files from a public GitHub repository's default branch as a Mermaid graph. Run the web app in development with:
+The Next.js App Router wrapper displays a rendered, directory-grouped SVG file-tree diagram for up to 30 files from a public GitHub repository's default branch. Run the web app in development with:
 
 ```sh
 npm run dev
 ```
 
-Then open `http://localhost:3000/<owner>/<repo>`, for example `http://localhost:3000/vercel/next.js`. GitHub API responses are cached for one hour. Private repositories are not supported by this wrapper.
+Then open `http://localhost:3000/<owner>/<repo>`, for example `http://localhost:3000/vercel/next.js`. The diagram is rendered in the page without requiring client-side Mermaid execution. GitHub API responses are cached for one hour. Private repositories are not supported by this wrapper.
 
 ```sh
 npm run build

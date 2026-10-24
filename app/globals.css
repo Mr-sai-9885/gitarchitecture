@@ -14,7 +14,7 @@ body {
   padding: 3rem;
 }
 
-.diagram {
+.diagram-viewport {
   overflow: auto;
   border: 1px solid #334155;
   border-radius: 0.5rem;
@@ -22,11 +22,44 @@ body {
   padding: 1.25rem;
 }
 
-.diagram svg {
+.architecture-diagram {
   display: block;
-  height: auto;
+  height: min(75vh, 900px);
+  min-height: 400px;
   margin: 0 auto;
-  max-width: 100%;
+  min-width: 100%;
+}
+
+.diagram-edge {
+  fill: none;
+  stroke: #475569;
+  stroke-width: 2;
+}
+
+.diagram-node rect {
+  stroke-width: 1.5;
+}
+
+.diagram-node text {
+  fill: #e2e8f0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.diagram-node-repository rect {
+  fill: #134e4a;
+  stroke: #2dd4bf;
+}
+
+.diagram-node-directory rect {
+  fill: #172554;
+  stroke: #60a5fa;
+}
+
+.diagram-node-file rect {
+  fill: #1e293b;
+  stroke: #475569;
 }
 
 .error {

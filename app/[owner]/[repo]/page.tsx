@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import MermaidDiagram from '../../MermaidDiagram';
+import ArchitectureDiagram from '../../ArchitectureDiagram';
 
 interface PageProps {
   params: Promise<{ owner: string; repo: string }>;
@@ -20,7 +20,7 @@ interface GitHubRepositoryResponse {
 }
 
 interface RepositoryDiagram {
-  markup: string;
+  filePaths: string[];
   truncated: boolean;
 }
 
@@ -69,7 +69,7 @@ export default async function DiagramPage({ params }: PageProps) {
         <p>This diagram shows the first {MAX_DISPLAYED_FILES} repository files.</p>
       )}
       <section aria-label="Repository architecture diagram">
-        <MermaidDiagram markup={diagram.markup} />
+        <ArchitectureDiagram repository={repositoryName} filePaths={diagram.filePaths} />
       </section>
     </main>
   );
@@ -108,14 +108,9 @@ async function fetchRepositoryDiagram(owner: string, repo: string): Promise<Repo
   const files = tree.tree
     .filter((item) => item.type === 'blob' && typeof item.path === 'string')
     .slice(0, MAX_DISPLAYED_FILES);
-  const lines = ['graph TD', '  root["Repository"]'];
-  files.forEach((file, index) => {
-    lines.push(`  file_${index}["${escapeMermaidLabel(file.path)}"]`);
-    lines.push(`  root --> file_${index}`);
-  });
 
   return {
-    markup: `${lines.join('\n')}\n`,
+    filePaths: files.map((file) => file.path),
     truncated: Boolean(tree.truncated) || tree.tree.filter((item) => item.type === 'blob').length > files.length,
   };
 }
@@ -126,15 +121,6 @@ function githubHeaders(): HeadersInit {
     'User-Agent': 'gitarchitecture-app',
     'X-GitHub-Api-Version': '2022-11-28',
   };
-}
-
-function escapeMermaidLabel(value: string): string {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('"', '&quot;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replace(/[\r\n\t]/g, ' ');
 }
 
 function RepositoryError({ message }: { message: string }) {
