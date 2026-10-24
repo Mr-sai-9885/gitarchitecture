@@ -22,7 +22,7 @@ export async function findSourceFiles(
     }
   }
 
-  const gitignore = ignore.default().add(gitignoreContents);
+  const gitignore = ignore().add(gitignoreContents);
   const candidates = await fg(`**/*`, {
     cwd: absoluteRoot,
     onlyFiles: true,

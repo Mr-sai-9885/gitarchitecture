@@ -7,8 +7,11 @@
     "repo-arch": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.build.json",
     "start": "tsx src/index.ts",
+    "dev:web": "next dev",
+    "build:web": "next build",
+    "start:web": "next start",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -21,10 +24,16 @@
     "@mermaid-js/mermaid-cli": "^11.4.2",
     "commander": "^12.1.0",
     "fast-glob": "^3.3.2",
-    "ignore": "^6.0.2"
+    "ignore": "^6.0.2",
+    "mermaid": "^11.14.0",
+    "next": "^15.5.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
