@@ -1,0 +1,32 @@
+{
+  "name": "repo-arch-visualizer",
+  "version": "0.1.0",
+  "description": "Analyze repository module dependencies and generate architecture diagrams.",
+  "type": "module",
+  "bin": {
+    "repo-arch": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.26.2",
+    "@google/genai": "^1.30.0",
+    "@mermaid-js/mermaid-cli": "^11.4.2",
+    "commander": "^12.1.0",
+    "fast-glob": "^3.3.2",
+    "ignore": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
